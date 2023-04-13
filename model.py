@@ -60,7 +60,7 @@ sns.heatmap(
 
 plt.xlabel('Predicted label')
 plt.ylabel('Actual label')
-plt.show()
+plt.savefig('prediction_results.png', dpi=120)
 
 model_roc_auc_rf= roc_auc_score(y_test,predictions)
 print('Area Under curve: ', model_roc_auc_rf, '\n')
@@ -73,5 +73,7 @@ plt.plot([0,1], [0,1], 'r--')
 plt.xlabel('False positive rate')
 plt.ylabel('True positive rate')
 plt.title('ROC curve')
+plt.savefig('roc_results.png', dpi=120)
 
-plt.show()
+with open('metrics.txt', 'w') as outfile:
+    outfile.write(f'\nAccuracy = {accuracy}, Precision of model = {precision}, Recall ofr model = {recall}.')

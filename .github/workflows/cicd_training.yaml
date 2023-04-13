@@ -21,9 +21,11 @@ jobs:
           echo "## Model Metrics" > report.md
           cat metrics.txt >> report.md
 
-          echo "\n ## Model performance plot" >> report.md
+          echo "\n ## Model performance and ROC plot" >> report.md
+          cml-publish prediction_results.png --md >> report.md
+          cml-send-comment report.md
 
-          cml-publish model_results.png --md >> report.md
+          cml-publish roc_results.png --md >> report.md
           cml-send-comment report.md
 
       - name: Get changes
@@ -32,7 +34,7 @@ jobs:
 
       - uses: EndBug/add-and-commit@v7
         with:
-          add: report.md metrics.txt model_results.png
+          add: report.md metrics.txt roc_results.png prediction_results.png
           author_name: CI-CD Pipeline run
-          author_email: tashico2016@gmail.com
+          author_email: tashist515@gmail.com
           message: "adding results from run"
