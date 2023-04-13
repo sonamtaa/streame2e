@@ -1,8 +1,9 @@
 name: CICD pipeline test
 on:
+  push:
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
 
 jobs:
   run:
@@ -36,6 +37,7 @@ jobs:
         with:
           add: report.md metrics.txt roc_results.png prediction_results.png
           author_name: sonamtaa
+          owner: sonamtaa
           author_email: 64897638+sonamtaa@users.noreply.github.com
           commit: --signoff
           message: "Docs: adding results from run"
