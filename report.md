@@ -1,6 +1,8 @@
 ## Model Metrics
 
-Accuracy = 0.9142857142857143, Precision of model = 0.967032967032967, Recall ofr model = 0.9214659685863874.
+Accuracy = 0.9183673469387755,
+ Precision of model = 0.9621621621621622, 
+ Recall ofr model = 0.9319371727748691
  ## Model performance and ROC plot
-![](https://asset.cml.dev/b198bc0691c7d04dff7ca6384977a69422d38a4e?cml=png)
-![](https://asset.cml.dev/f9ca0b0e3073b608fcf0da8bdd87e54eeb3ddd57?cml=png)
+![](https://asset.cml.dev/4152211d22714329e17deb3a651b9bfee437e80c?cml=png)
+![](https://asset.cml.dev/7ea5444965940fd5a82ad8a8648aee3025192692?cml=png)
