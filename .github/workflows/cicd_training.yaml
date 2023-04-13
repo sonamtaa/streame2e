@@ -32,9 +32,10 @@ jobs:
         run: |
           git status -uno
 
-      - uses: EndBug/add-and-commit@v7
+      - uses: EndBug/add-and-commit@v9
         with:
           add: report.md metrics.txt roc_results.png prediction_results.png
-          author_name: CI-CD Pipeline run
-          author_email: tashist515@gmail.com
-          message: "adding results from run"
+          author_name: sonamtaa
+          author_email: 64897638+sonamtaa@users.noreply.github.com
+          commit: --signoff
+          message: "Docs: adding results from run"
