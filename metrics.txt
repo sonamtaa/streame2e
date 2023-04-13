@@ -1,0 +1,2 @@
+
+Accuracy = 0.9142857142857143, Precision of model = 0.967032967032967, Recall ofr model = 0.9214659685863874.
