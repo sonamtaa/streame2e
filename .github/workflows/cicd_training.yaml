@@ -1,0 +1,45 @@
+name: CICD pipeline test
+on:
+  # push:
+    # branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run:
+    runs-on: [ubuntu-latest]
+    container: docker://dvcorg/cml-py3:latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+      - name: "Training run"
+        env:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+
+          pip install -r requirements.txt
+          python model.py
+
+          echo "## Model Metrics" > report.md
+          cat metrics.txt >> report.md
+
+          echo "\n ## Model performance and ROC plot" >> report.md
+          cml-publish prediction_results.png --md >> report.md
+          cml-send-comment report.md
+
+          cml-publish roc_results.png --md >> report.md
+          cml-send-comment report.md
+
+      - name: Get changes
+        run: |
+          git status -uno
+
+      - uses: EndBug/add-and-commit@v9
+        with:
+          add: report.md metrics.txt roc_results.png prediction_results.png
+          author_name: sonamtaa
+          owner: sonamtaa
+          author_email: 64897638+sonamtaa@users.noreply.github.com
+          commit: --signoff
+          message: "Docs: adding results from run"
